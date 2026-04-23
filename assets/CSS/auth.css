@@ -1,0 +1,182 @@
+/* =========================================
+   Cyberpunk Authentication Pages Style
+   ========================================= */
+
+.auth-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
+    position: relative;
+    z-index: 10;
+}
+
+/* ─── AUTHENTICATION CARD ──────────────────── */
+.auth-card {
+    width: 100%;
+    max-width: 420px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+    padding: 3rem 2.5rem;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), 
+                inset 0 0 20px rgba(0, 212, 255, 0.05);
+    position: relative;
+    animation: glitch-in 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@keyframes glitch-in {
+    0% { opacity: 0; transform: translateY(30px) scale(0.98); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.auth-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--color-7x-cyan), var(--color-7x-blue), transparent);
+    box-shadow: var(--glow-cyan);
+}
+
+/* ─── LOGO & TITLE ──────────────────── */
+.auth-logo {
+    display: block;
+    margin: 0 auto 1.5rem;
+    max-width: 80px;
+    filter: drop-shadow(0 0 15px rgba(0, 212, 255, 0.5));
+    transition: transform var(--transition);
+}
+
+.auth-logo:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.auth-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, var(--color-7x-cyan), var(--color-7x-purple-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+}
+
+/* ─── ALERTS / MESSAGES ──────────────────── */
+.msg-box {
+    padding: 12px 15px;
+    margin-bottom: 1.5rem;
+    border-radius: var(--radius);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    text-align: center;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.msg-box.error {
+    background: rgba(255, 0, 60, 0.1);
+    border: 1px solid #FF003C;
+    color: #FF8A8A;
+    box-shadow: 0 0 15px rgba(255, 0, 60, 0.3);
+}
+
+/* ─── FORM INPUTS ──────────────────── */
+.input-group {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.input-group label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--color-7x-cyan);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.input-group label::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background-color: var(--color-7x-cyan);
+    box-shadow: var(--glow-cyan);
+}
+
+.input-group input {
+    width: 100%;
+    padding: 14px 16px;
+    background: var(--bg-deep);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+    color: var(--text-primary);
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    transition: all var(--transition);
+    outline: none;
+}
+
+.input-group input::placeholder {
+    color: var(--text-muted);
+}
+
+.input-group input:focus {
+    border-color: var(--color-7x-cyan);
+    background: var(--bg-surface);
+    box-shadow: var(--glow-cyan), inset 0 0 10px rgba(0, 255, 255, 0.1);
+}
+
+/* ─── BUTTON OVERRIDES ──────────────────── */
+.auth-card .auth-btn {
+    margin-top: 1rem;
+    font-family: var(--font-display);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+}
+
+.auth-card .auth-btn::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(transparent, rgba(255,255,255,0.1), transparent);
+    transform: rotate(45deg) translateY(-100%);
+    transition: transform 0.6s ease;
+}
+
+.auth-card .auth-btn:hover::after {
+    transform: rotate(45deg) translateY(100%);
+}
+
+/* ─── FOOTER LINK ──────────────────── */
+.auth-card a {
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px dashed var(--color-7x-blue);
+    padding-bottom: 2px;
+}
+
+.auth-card a:hover {
+    border-bottom-style: solid;
+    text-shadow: var(--glow-cyan);
+}

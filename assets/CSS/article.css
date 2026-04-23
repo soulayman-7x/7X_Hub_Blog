@@ -1,0 +1,141 @@
+.article-hero {
+    padding: 4rem 0 3rem;
+}
+
+.article-hero .container {
+    max-width: 860px;
+}
+
+
+.article-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+
+.article-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.1;
+    margin-bottom: 2rem;
+}
+
+.article-title .title-accent {
+    color: var(--color-7x-blue);
+    text-shadow: var(--glow-blue);
+}
+
+
+.article-meta-bar {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.author-block {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+
+.author-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--glass-border-hover);
+    background: linear-gradient(135deg, var(--color-7x-purple), rgba(0, 212, 255, 0.3));
+    /* Placeholder: replace with image */
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.author-avatar::after {
+    content: '';
+    position: absolute;
+    background: linear-gradient(135deg, rgba(184, 41, 234, 0.4), rgba(0, 212, 255, 0.2));
+}
+
+
+.author-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+}
+
+.author-name {
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--text-primary);
+}
+
+.meta-divider {
+    width: 1px;
+    height: 36px;
+    background: var(--glass-border);
+}
+
+.meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+}
+
+
+.meta-item-label {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.meta-item-value {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+/* Featured Image */
+.article-image {
+    width: 100%;
+    max-width: 860px;
+    height: 420px;
+    margin: 0 auto 3rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--glass-border);
+    object-fit: cover;
+    display: block;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Article Content */
+.article-content {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 0 4rem;
+}
+
+.article-body {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.article-body p {
+    font-size: 1.1rem;
+    line-height: 1.9;
+    color: rgba(232, 222, 255, 0.75);
+}
+
+.article-body h2 {
+    font-size: 1.6rem;
+    color: var(--text-primary);
+    margin-top: 1rem;
+}
