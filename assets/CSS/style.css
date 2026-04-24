@@ -397,6 +397,18 @@ main {
     border: 1px solid rgba(0, 255, 255, 0.2);
 }
 
+.tag-magenta {
+    color: #ff00ff;
+    background: rgba(255, 0, 255, 0.1);
+    border: 1px solid rgba(255, 0, 255, 0.25);
+}
+
+.tag-cobalt {
+    color: #1a4fff;
+    background: rgba(26, 79, 255, 0.1);
+    border: 1px solid rgba(26, 79, 255, 0.25);
+}
+
 /* =========================== */
 /*     FOOTER                  */
 /* =========================== */

@@ -17,19 +17,8 @@ $db = $database->getConnection();
 
 $admin = new Admin($db);
 $stats = $admin->getSystemStats();
-
-$posts = [];
-if ($db) {
-    $sql = "SELECT posts.*, users.username AS author_name, categories.name AS category_name 
-            FROM posts 
-            LEFT JOIN users ON posts.user_id = users.id 
-            LEFT JOIN categories ON posts.category_id = categories.id 
-            ORDER BY posts.created_at DESC";
-    
-    $stmt = $db->prepare($sql);
-    $stmt->execute();
-    $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
-}
+$featuredPost = $admin->getLatestFeaturedPost();
+$posts = $admin->getAllPosts();
 
 
 $categories = [];
@@ -46,8 +35,6 @@ if ($db) {
     $catAllStmt->execute();
     $categories_count = $catAllStmt->fetchColumn();
 }
-
-
 
 
 ?>
@@ -131,89 +118,67 @@ if ($db) {
                 </div>
 
                 <!-- Featured Post -->
-                <article class="featured-post glass-card">
-                    <img class="post-image" src="assets/images/image1.png" alt="tech image">
-                    <div class="post-body">
-                        <div class="post-meta">
-                            <span class="tag tag-blue">Neural Interfaces</span>
-                            <span class="tag tag-purple">Featured</span>
-                            <time class="post-date" datetime="2025-06-12">Jun 12, 2025</time>
+                <?php if ($featuredPost): ?>
+                    <article class="featured-post glass-card">
+                        <img class="post-image" src="<?= htmlspecialchars($featuredPost['image_path']) ?>" alt="<?= htmlspecialchars($featuredPost['title']) ?>">
+
+                        <div class="post-body">
+                            <div class="post-meta">
+                                <span class="<?= htmlspecialchars($featuredPost['category_color']) ?>"><?= htmlspecialchars($featuredPost['category_name']) ?></span>
+                                <span class="tag tag-purple">Featured</span>
+                                <time class="post-date" datetime="<?= date('Y-m-d', strtotime($featuredPost['created_at'])) ?>">
+                                    <?= date('M d, Y', strtotime($featuredPost['created_at'])) ?>
+                                </time>
+                            </div>
+
+                            <h2 class="post-title">
+                                <a href="article.php?id=<?= $featuredPost['id'] ?>"><?= htmlspecialchars($featuredPost['title']) ?></a>
+                            </h2>
+
+                            <p class="post-excerpt">
+                                <?= htmlspecialchars(mb_substr($featuredPost['content'], 0, 180)) ?>...
+                            </p>
+
+                            <a href="article.php?id=<?= $featuredPost['id'] ?>" class="btn btn-primary btn-arrow" style="align-self:flex-start;margin-top:0.5rem;">
+                                Read Full Article
+                            </a>
                         </div>
-                        <h2 class="post-title">
-                            <a href="article.html">Ghost Protocol: When AI Learns to Dream in Code</a>
-                        </h2>
-                        <p class="post-excerpt">
-                            The boundary between biological cognition and synthetic intelligence has never been thinner.
-                            We explore the latest breakthroughs in recursive neural architectures and what it means when
-                            a machine begins to model its own uncertainty — and fear.
-                        </p>
-                        <a href="article.html" class="btn btn-primary btn-arrow"
-                            style="align-self:flex-start;margin-top:0.5rem;">Read Full Article</a>
-                    </div>
-                </article>
+                    </article>
+                <?php endif; ?>
                 <div class="neon-line"></div>
 
                 <!-- Post Grid -->
                 <div class="post-grid">
-                    <article class="post-card glass-card">
-                        <img src="assets/images/image1.png" alt="Cybersecurity illustration" class="card-image">
+                    <?php if (!empty($posts)): ?>
+                        <?php foreach ($posts as $item): ?>
+                            <article class="post-card glass-card">
+                                <img src="<?= htmlspecialchars($item['image_path']) ?>" alt="<?= htmlspecialchars($item['title']) ?>" class="card-image">
 
-                        <div class="card-body">
-                            <div class="post-meta">
-                                <span class="tag tag-cyan">Cybersecurity</span>
-                                <time class="post-date" datetime="2025-06-10">Jun 10, 2025</time>
-                            </div>
-                            <h3 class="card-title">
-                                <a href="article.html">Zero-Day Markets: The Underground Economy of Digital Weapons</a>
-                            </h3>
-                            <p class="card-excerpt">Inside the shadowed brokerages where critical software
-                                vulnerabilities are bought and sold for millions.</p>
-                            <div class="card-footer">
-                                <a href="article.html" class="read-more">Read More</a>
-                                <span class="post-date">8 min read</span>
-                            </div>
-                        </div>
-                    </article>
+                                <div class="card-body">
+                                    <div class="post-meta">
+                                        <span class="tag <?= htmlspecialchars($item['category_color']) ?>"><?= htmlspecialchars($item['category_name']) ?></span>
 
-                    <article class="post-card glass-card">
-                        <img src="assets/images/image1.png" alt="Cybersecurity illustration" class="card-image">
+                                        <time class="post-date" datetime="<?= date('Y-m-d', strtotime($item['created_at'])) ?>">
+                                            <?= date('M d, Y', strtotime($item['created_at'])) ?>
+                                        </time>
+                                    </div>
 
-                        <div class="card-body">
-                            <div class="post-meta">
-                                <span class="tag tag-cyan">Cybersecurity</span>
-                                <time class="post-date" datetime="2025-06-10">Jun 10, 2025</time>
-                            </div>
-                            <h3 class="card-title">
-                                <a href="article.html">Zero-Day Markets: The Underground Economy of Digital Weapons</a>
-                            </h3>
-                            <p class="card-excerpt">Inside the shadowed brokerages where critical software
-                                vulnerabilities are bought and sold for millions.</p>
-                            <div class="card-footer">
-                                <a href="article.html" class="read-more">Read More</a>
-                                <span class="post-date">8 min read</span>
-                            </div>
-                        </div>
-                    </article>
+                                    <h3 class="card-title">
+                                        <a href="article.php?id=<?= $item['id'] ?>"><?= htmlspecialchars($item['title']) ?></a>
+                                    </h3>
 
-                    <article class="post-card glass-card">
-                        <img src="assets/images/image1.png" alt="Cybersecurity illustration" class="card-image">
+                                    <p class="card-excerpt">
+                                        <?= htmlspecialchars(mb_substr($item['content'], 0, 100)) ?>...
+                                    </p>
 
-                        <div class="card-body">
-                            <div class="post-meta">
-                                <span class="tag tag-cyan">Cybersecurity</span>
-                                <time class="post-date" datetime="2025-06-10">Jun 10, 2025</time>
-                            </div>
-                            <h3 class="card-title">
-                                <a href="article.html">Zero-Day Markets: The Underground Economy of Digital Weapons</a>
-                            </h3>
-                            <p class="card-excerpt">Inside the shadowed brokerages where critical software
-                                vulnerabilities are bought and sold for millions.</p>
-                            <div class="card-footer">
-                                <a href="article.html" class="read-more">Read More</a>
-                                <span class="post-date">8 min read</span>
-                            </div>
-                        </div>
-                    </article>
+                                    <div class="card-footer">
+                                        <a href="article.php?id=<?= $item['id'] ?>" class="read-more">Read More</a>
+                                        <span class="post-date">Verified</span>
+                                    </div>
+                                </div>
+                            </article>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                 </div>
 
                 <!-- Newsletter -->
