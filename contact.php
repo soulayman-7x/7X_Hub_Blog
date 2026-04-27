@@ -7,6 +7,7 @@ require_once 'core/Admin.php';
 if (isset($_SESSION['user_id'])) {
     $isLoggedIn = true;
     $username = htmlspecialchars($_SESSION['username']);
+    $userId = intval($_SESSION['user_id']);
 } else {
     $isLoggedIn = false;
     $username = 'Guest';
@@ -14,6 +15,24 @@ if (isset($_SESSION['user_id'])) {
 
 $database = new Database();
 $db = $database->getConnection();
+
+$admin = new Admin($db);
+
+if ($db) {
+    $sql ="SELECT email FROM users WHERE id = :id LIMIT 1";
+
+    $stmt = $db->prepare($sql);
+    $stmt->bindParam(':id', $userId, PDO::PARAM_INT);
+    $stmt->execute();
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+    if ($result) {
+        $userEmail = $result['email'];
+    } else {
+        $userEmail = null; 
+    }
+}
 
 ?>
 <!DOCTYPE html>
@@ -108,7 +127,7 @@ $db = $database->getConnection();
                                     <label class="form-label" for="firstName">First Name <span
                                             class="req">*</span></label>
                                     <input class="form-input" type="text" id="firstName" name="firstName"
-                                        placeholder="e.g. SOULAYMAN" autocomplete="given-name" required />
+                                        value="<?= htmlspecialchars($username) ?>" placeholder="e.g. soulayman" autocomplete="given-name" required />
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label" for="lastName">Last Name <span
@@ -121,7 +140,7 @@ $db = $database->getConnection();
                             <div class="form-group">
                                 <label class="form-label" for="email">Email Address <span class="req">*</span></label>
                                 <input class="form-input" type="email" id="email" name="email"
-                                    placeholder="your@signal.net" autocomplete="email" required />
+                                    value="<?= htmlspecialchars($userEmail) ?>" placeholder="7x.hub@gmail.com" autocomplete="email" required />
                             </div>
 
 
