@@ -27,11 +27,15 @@ class Admin
     // 2.
     public function getAllPostsAdmin()
     {
-        $sql = "SELECT posts.id, posts.title, posts.created_at, categories.name AS category_name, users.username AS author
-                FROM posts
-                LEFT JOIN categories ON posts.category_id = categories.id
-                LEFT JOIN users ON posts.user_id = users.id
-                ORDER BY posts.created_at DESC";
+        $sql = "SELECT posts.id, posts.title, posts.created_at, 
+                    categories.name AS category_name, 
+                    categories.color_tag, 
+                    users.username AS author
+                    FROM posts
+                    LEFT JOIN categories ON posts.category_id = categories.id
+                    LEFT JOIN users ON posts.user_id = users.id
+                    ORDER BY posts.created_at DESC";
+
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
