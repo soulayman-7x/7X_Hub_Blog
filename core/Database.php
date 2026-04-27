@@ -9,7 +9,7 @@ class Database
         $this->conn = null;
 
         try {
-            $dsn = "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8mb4";
+            $dsn = "mysql:host=" . DB_HOST . ";port=" . DB_PORT . ";dbname=" . DB_NAME . ";charset=utf8mb4";
             $this->conn = new PDO($dsn, DB_USER, DB_PASS);
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -106,7 +106,7 @@ class Database
                     <div class='error-container'>
                         <h3 class='error-header'>CRITICAL_FAILURE</h3>
                         <div class='error-body'>
-                            > CONNECTION_LOST: The X-Core could not be reached.<br>
+                            > CONNECTION_LOST: The 7X-Hub could not be reached.<br>
                             > ACTION: Anomaly logged. Engineering team notified.
                         </div>
                         <div class='error-footer'>
