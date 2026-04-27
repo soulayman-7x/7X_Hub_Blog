@@ -77,8 +77,8 @@ class Admin
     public function getAllPosts()
     {
         $sql = "SELECT posts.*, users.username AS author_name, 
-                       categories.name AS category_name,
-                       categories.color_tag AS category_color 
+            categories.name AS category_name,
+            categories.color_tag AS category_color 
             FROM posts 
             LEFT JOIN users ON posts.user_id = users.id 
             LEFT JOIN categories ON posts.category_id = categories.id 
