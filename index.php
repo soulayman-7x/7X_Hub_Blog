@@ -21,15 +21,10 @@ $featuredPost = $admin->getLatestFeaturedPost();
 $posts = $admin->getAllPosts();
 
 
-$categories = [];
+$categories = $admin->getAllCategories();
 $categories_count = [];
 
 if ($db) {
-    $catSql = "SELECT * FROM categories";
-    $catStmt = $db->prepare($catSql);
-    $catStmt->execute();
-    $categories = $catStmt->fetchAll(PDO::FETCH_ASSOC);
-
     $catAll = "SELECT COUNT(*) FROM categories";
     $catAllStmt = $db->prepare($catAll);
     $catAllStmt->execute();
@@ -114,7 +109,7 @@ if ($db) {
                         <p class="section-label">Latest Transmissions</p>
                         <h2 class="section-title">Recent Articles</h2>
                     </div>
-                    <a href="#" class="btn btn-ghost">View All</a>
+                    <a href="#post-grid" class="btn btn-ghost">View All</a>
                 </div>
 
                 <!-- Featured Post -->
@@ -148,7 +143,7 @@ if ($db) {
                 <div class="neon-line"></div>
 
                 <!-- Post Grid -->
-                <div class="post-grid">
+                <div class="post-grid" id="post-grid">
                     <?php if (!empty($posts)): ?>
                         <?php foreach ($posts as $item): ?>
                             <article class="post-card glass-card">
