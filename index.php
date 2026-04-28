@@ -168,7 +168,10 @@ if ($db) {
 
                                     <div class="card-footer">
                                         <a href="article.php?id=<?= $item['id'] ?>" class="read-more">Read More</a>
-                                        <span class="post-date">Verified</span>
+                                        <div class="post-author">
+                                            <div class="author-avatar"></div>
+                                            <span><i class="fa-solid fa-user-shield"></i> <?php echo htmlspecialchars($item['author_name'] ?? 'System'); ?></span>
+                                        </div>
                                     </div>
                                 </div>
                             </article>
