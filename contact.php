@@ -10,29 +10,57 @@ if (isset($_SESSION['user_id'])) {
     $userId = intval($_SESSION['user_id']);
 } else {
     $isLoggedIn = false;
-    $username = 'Guest';
+    $username = '';
 }
 
 $database = new Database();
 $db = $database->getConnection();
-
 $admin = new Admin($db);
 
-if ($db) {
-    $sql ="SELECT email FROM users WHERE id = :id LIMIT 1";
+$userEmail = '';
+
+if ($isLoggedIn && $db) {
+    $sql = "SELECT email FROM users WHERE id = :id LIMIT 1";
 
     $stmt = $db->prepare($sql);
     $stmt->bindParam(':id', $userId, PDO::PARAM_INT);
     $stmt->execute();
 
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    
+
     if ($result) {
         $userEmail = $result['email'];
-    } else {
-        $userEmail = null; 
     }
 }
+
+$statusMessage = '';
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $firstName = htmlspecialchars(trim($_POST['firstName'] ?? ''));
+    $lastName = htmlspecialchars(trim($_POST['lastName'] ?? ''));
+    $email = filter_var(trim($_POST['email'] ?? ''), FILTER_SANITIZE_EMAIL);
+    $message = htmlspecialchars(trim($_POST['message'] ?? ''));
+
+    if (!empty($firstName) && !empty($lastName) && !empty($email) && !empty($message)) {
+        $insertSql = "INSERT INTO contact_messages (first_name, last_name, email, message) VALUES (:first_name, :last_name, :email, :message)";
+        $insertStmt = $db->prepare($insertSql);
+        
+        $insertStmt->bindParam(':first_name', $firstName);
+        $insertStmt->bindParam(':last_name', $lastName);
+        $insertStmt->bindParam(':email', $email);
+        $insertStmt->bindParam(':message', $message);
+
+        if ($insertStmt->execute()) {
+            $statusMessage = "<div style='color: var(--color-7x-cyan); border: 1px solid var(--color-7x-cyan); padding: 15px; margin-bottom: 25px; border-radius: var(--radius); background: rgba(0, 212, 255, 0.05); font-family: var(--font-mono);'>> TRANSMISSION SUCCESSFUL: Signal received by 7X Hub.</div>";
+        } else {
+            $statusMessage = "<div style='color: #ff4d4d; border: 1px solid #ff4d4d; padding: 15px; margin-bottom: 25px; border-radius: var(--radius); background: rgba(255, 77, 77, 0.05); font-family: var(--font-mono);'>> TRANSMISSION FAILED: Network interference detected.</div>";
+        }
+    } else {
+        $statusMessage = "<div style='color: #ff4d4d; border: 1px solid #ff4d4d; padding: 15px; margin-bottom: 25px; border-radius: var(--radius); background: rgba(255, 77, 77, 0.05); font-family: var(--font-mono);'>> WARNING: All fields are required to establish connection.</div>";
+    }
+}
+
+
 
 ?>
 <!DOCTYPE html>
@@ -119,8 +147,10 @@ if ($db) {
 
                         <h3 class="form-title">Send a Transmission</h3>
                         <p class="form-subtitle">// All fields marked with * are required</p>
+                        
+                        <?= $statusMessage ?>
 
-                        <form id="contactForm" novalidate>
+                        <form id="contactForm" method="POST">
 
                             <div class="form-row">
                                 <div class="form-group">
