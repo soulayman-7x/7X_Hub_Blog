@@ -72,7 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <button type="submit" class="auth-btn auth-btn-large" style="margin-top: 10px;">Execute Protocol</button>
         </form>
 
-        <div style="text-align: center; margin-top: 24px; font-size: 13px; color: var(--text-secondary);">
+        <div s tyle="text-align: center; margin-top: 24px; font-size: 13px; color: var(--text-secondary);">
             Already integrated? <a href="login.php">Access System</a>
         </div>
     </div>
