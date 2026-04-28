@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 27, 2026 at 12:47 PM
+-- Generation Time: Apr 28, 2026 at 04:14 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -71,7 +71,28 @@ INSERT INTO `comments` (`id`, `post_id`, `user_id`, `comment_text`, `created_at`
 (5, 4, 1, 'JFSDLKJ', '2026-04-20 15:15:36'),
 (6, 4, 1, 'تسيمنتمش', '2026-04-20 15:18:29'),
 (7, 3, 6, 'jflksdajlfks', '2026-04-21 08:43:47'),
-(8, 3, 5, 'fsdjlkjlaks', '2026-04-21 08:44:21');
+(8, 3, 5, 'fsdjlkjlaks', '2026-04-21 08:44:21'),
+(9, 6, 4, 'Strict protocols are the only way. I have integrated this Beast Mode approach into my local firewall.', '2026-04-27 12:00:00'),
+(10, 7, 6, 'Nested abstraction is key. Have you tested this structure against high-load multi-threading?', '2026-04-27 12:15:00'),
+(11, 8, 5, 'Pure OOP without native browser popups makes the UI flow flawlessly. Great insights on synthetic cognition.', '2026-04-27 12:30:00'),
+(12, 9, 3, 'Serverless deployment reduced our latency by 40%. The 7X ecosystem is scaling perfectly.', '2026-04-27 12:45:00'),
+(13, 10, 1, 'Cognitive UI mapping is still experimental, but the early operational metrics are very promising.', '2026-04-27 13:00:00'),
+(14, 9, 6, 'hi', '2026-04-27 11:37:28');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contact_messages`
+--
+
+CREATE TABLE `contact_messages` (
+  `id` int(11) NOT NULL,
+  `first_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `message` text NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -148,6 +169,12 @@ ALTER TABLE `comments`
   ADD KEY `user_id` (`user_id`);
 
 --
+-- Indexes for table `contact_messages`
+--
+ALTER TABLE `contact_messages`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `posts`
 --
 ALTER TABLE `posts`
@@ -176,7 +203,13 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT for table `contact_messages`
+--
+ALTER TABLE `contact_messages`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `posts`
