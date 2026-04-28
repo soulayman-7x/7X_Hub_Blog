@@ -258,6 +258,10 @@
     margin-top: auto;
 }
 
+.post-author {
+    color: var(--text-muted);
+}
+
 /* ================================= */
 /*  Newsletter Band                  */
 /* ================================= */

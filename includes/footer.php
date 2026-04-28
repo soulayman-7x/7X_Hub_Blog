@@ -14,7 +14,7 @@
                 <ul class="footer-links">
                     <li><a href="index.php"><i class="fa-solid fa-house-chimney" style="margin-right: 8px;"></i> Home</a></li>
 
-                    <li><a href="article.php"><i class="fa-solid fa-file-code" style="margin-right: 8px;"></i> Articles</a></li>
+                    <li><a href="#posts_grid"><i class="fa-solid fa-file-code" style="margin-right: 8px;"></i> Articles</a></li>
 
                     <li><a href="#"><i class="fa-solid fa-address-card" style="margin-right: 8px;"></i> About</a></li>
                 </ul>
