@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>تقرير مشروع - 7X Hub Blog</title>
+    <style>
+        :root {
+            --color-primary: #6A0DAD; /* 7X Purple */
+            --color-secondary: #00D4FF; /* 7X Blue */
+            --text-color: #333333;
+            --bg-color: #ffffff;
+        }
+        @media print {
+            body {
+                background-color: white !important;
+                color: black !important;
+            }
+            .page-break {
+                page-break-before: always;
+            }
+            a {
+                text-decoration: none;
+                color: black;
+            }
+        }
+        @page {
+            size: A4;
+            margin: 2.5cm;
+        }
+        body {
+            font-family: 'Sakkal Majalla', 'Traditional Arabic', 'Arial', sans-serif;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            line-height: 1.8;
+            margin: 0;
+            padding: 20px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 18px;
+        }
+        .cover-page {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 90vh;
+            text-align: center;
+        }
+        .cover-page img {
+            max-width: 250px;
+            margin-bottom: 2rem;
+        }
+        .cover-title {
+            font-size: 3rem;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        .cover-subtitle {
+            font-size: 1.8rem;
+            color: var(--text-color);
+            margin-bottom: 4rem;
+        }
+        .cover-details {
+            font-size: 1.4rem;
+            margin-top: auto;
+            margin-bottom: 2rem;
+        }
+        h1, h2, h3, h4 {
+            color: var(--color-primary);
+            font-weight: bold;
+        }
+        h1 {
+            font-size: 2.2rem;
+            border-bottom: 2px solid var(--color-secondary);
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+        h2 {
+            font-size: 1.8rem;
+            margin-top: 30px;
+        }
+        h3 {
+            font-size: 1.4rem;
+            color: var(--color-secondary);
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 16px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: right;
+        }
+        th {
+            background-color: #f9f9f9;
+            color: var(--color-primary);
+        }
+        .toc {
+            background-color: #fdfdfd;
+            border: 1px solid #eee;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .toc ul {
+            list-style-type: none;
+            padding-right: 0;
+        }
+        .toc li {
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        .toc a {
+            text-decoration: none;
+            color: var(--color-primary);
+        }
+        .toc a:hover {
+            text-decoration: underline;
+        }
+        .img-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .img-container img {
+            max-width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .caption {
+            font-size: 1rem;
+            color: #666;
+            margin-top: 8px;
+            font-style: italic;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: monospace;
+            color: #d10000;
+            direction: ltr;
+            display: inline-block;
+        }
+        .section-number {
+            color: var(--color-secondary);
+            margin-left: 10px;
+        }
+        ul {
+            padding-right: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. Cover Page -->
+    <div class="cover-page">
+        <img src="../assets/images/logo/X-Core-V1-Bl.png" alt="شعار 7X Hub Blog">
+        <div class="cover-title">7X Hub Blog</div>
+        <div class="cover-subtitle">تقرير مشروع أكاديمي متكامل</div>
+        
+        <div class="cover-details">
+            <p><strong>تطوير الويب الشامل (Full-Stack)</strong></p>
+            <p>التصميم، الهيكلة والتنفيذ</p>
+            <br><br>
+            <p>تاريخ الإصدار: مايو 2026</p>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- 2. Acknowledgments -->
+    <h1><span class="section-number">أولاً.</span>شكر وتقدير</h1>
+    <p>نتقدم بخالص الشكر والتقدير لكل من أسهم في إنجاز هذا المشروع، سواء بالدعم التقني أو التوجيه الأكاديمي. لقد كان لإرشاداتهم دور بارز في الوصول بنظام 7X Hub Blog إلى هذه المرحلة من الاحترافية والكمال.</p>
+
+    <!-- 3. Abstract / Summary -->
+    <h1><span class="section-number">ثانياً.</span>ملخص المشروع</h1>
+    <p>يُعد مشروع "7X Hub Blog" منصة ويب تفاعلية متطورة، تم بناؤها بالاعتماد على لغة PHP باستخدام النمط كائني التوجه (OOP)، ومكتبة PDO لإدارة قواعد بيانات MySQL. يوثّق هذا التقرير جميع مراحل التصميم والهيكلة البرمجية للمشروع. يبرز النظام واجهة مستخدم عصرية تعتمد على نمطي "Glassmorphism" و"Dark Theme"، وتتكامل مع واجهة خلفية قوية توفر مصادقة آمنة، وإدارة متكاملة للمستخدمين، ونظام إدارة محتوى شامل (CRUD) للمقالات، الفئات، والتعليقات.</p>
+
+    <div class="page-break"></div>
+
+    <!-- 4. Table of Contents -->
+    <h1><span class="section-number">ثالثاً.</span>فهرس المحتويات</h1>
+    <div class="toc">
+        <ul>
+            <li><a href="#intro">1. مقدمة عامة</a></li>
+            <li><a href="#presentation">2. التعريف بالمشروع</a></li>
+            <li><a href="#problematic">3. الإشكالية</a></li>
+            <li><a href="#objectives">4. الأهداف</a></li>
+            <li><a href="#req-func">5. المتطلبات الوظيفية</a></li>
+            <li><a href="#req-nonfunc">6. المتطلبات غير الوظيفية</a></li>
+            <li><a href="#arch-sys">7. هيكلية النظام</a></li>
+            <li><a href="#arch-db">8. هيكلية قاعدة البيانات</a></li>
+            <li><a href="#db-rel">9. علاقات قاعدة البيانات</a></li>
+            <li><a href="#sql-exp">10. شرح البنية البرمجية لقاعدة البيانات (SQL)</a></li>
+            <li><a href="#auth">11. نظام المصادقة</a></li>
+            <li><a href="#user-mgt">12. نظام إدارة المستخدمين</a></li>
+            <li><a href="#admin-dash">13. تحليل لوحة تحكم الإدارة</a></li>
+            <li><a href="#blog-mgt">14. نظام إدارة المقالات</a></li>
+            <li><a href="#crud">15. شرح عمليات CRUD</a></li>
+            <li><a href="#frontend">16. تحليل واجهة المستخدم الأمامية</a></li>
+            <li><a href="#backend">17. تحليل الواجهة الخلفية</a></li>
+            <li><a href="#ui-ux">18. تحليل تجربة وواجهة المستخدم (UI/UX)</a></li>
+            <li><a href="#nav">19. هيكلية التنقل</a></li>
+            <li><a href="#sec">20. إدارة الجلسات والأمن</a></li>
+            <li><a href="#resp">21. شرح التصميم المتجاوب</a></li>
+            <li><a href="#tech">22. التقنيات المستخدمة</a></li>
+            <li><a href="#dev-env">23. بيئة التطوير</a></li>
+            <li><a href="#test">24. الاختبار والمصادقة</a></li>
+            <li><a href="#results">25. النتائج والمناقشة</a></li>
+            <li><a href="#problems">26. المشاكل التي تمت مواجهتها</a></li>
+            <li><a href="#future">27. التحسينات المستقبلية</a></li>
+            <li><a href="#conclusion">28. خاتمة عامة</a></li>
+            <li><a href="#biblio">29. المراجع</a></li>
+        </ul>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- 5. General introduction -->
+    <h1 id="intro"><span class="section-number">1.</span>مقدمة عامة</h1>
+    <p>في عصر التحول الرقمي، يتطلب نشر المحتوى على الإنترنت أنظمة قوية، آمنة، وذات جاذبية بصرية عالية. تم إطلاق مشروع 7X Hub Blog لتلبية هذه الحاجة من خلال توفير منصة تدوين حديثة. يركز النهج المتبع في هذا المشروع على استخدام لغة PHP الصرفة مع البرمجة كائنية التوجه، مما يضمن أداءً فائقاً دون الاعتماد على إطارات عمل (Frameworks) برمجية ثقيلة.</p>
+
+    <!-- 6. Project presentation -->
+    <h1 id="presentation"><span class="section-number">2.</span>التعريف بالمشروع</h1>
+    <p>نظام <strong>7X Hub Blog</strong> هو تطبيق ويب ينقسم إلى قسمين رئيسيين: واجهة عامة للزوار لقراءة المقالات والتفاعل معها، ولوحة تحكم إدارية آمنة لإدارة المحتوى. يتبنى التصميم العام هوية بصرية مستوحاة من أسلوب "السايبربانك" وتأثير "الزجاج المصنفر (Glassmorphism)"، حيث يتميز بألوان داكنة تتخللها لمسات مضيئة باللونين السماوي والأرجواني.</p>
+
+    <!-- 7. Problematic -->
+    <h1 id="problematic"><span class="section-number">3.</span>الإشكالية</h1>
+    <p>كيف يمكن تصميم وتطوير نظام لإدارة المحتوى (CMS) يتميز بالخفة والأمان، ويوفر تجربة مستخدم راقية (UI/UX)، مع الحفاظ في الوقت ذاته على هيكلية برمجية قابلة للصيانة وبنية قاعدة بيانات علائقية عالية الأداء؟</p>
+
+    <!-- 8. Objectives -->
+    <h1 id="objectives"><span class="section-number">4.</span>الأهداف</h1>
+    <ul>
+        <li>تطوير واجهة مستخدم جذابة بصرياً دون الاستعانة بمكتبات CSS خارجية.</li>
+        <li>بناء نظام مصادقة آمن يعتمد على تقنيات تشفير كلمات المرور الحديثة.</li>
+        <li>إنشاء لوحة تحكم إدارية شاملة تتيح إدارة المقالات، المستخدمين، والفئات بكل سهولة.</li>
+        <li>تأمين النظام ضد الثغرات الشائعة مثل حقن قواعد البيانات (SQL Injection) باستخدام الاستعلامات المجهزة (PDO).</li>
+    </ul>
+
+    <!-- 9. Functional requirements -->
+    <h1 id="req-func"><span class="section-number">5.</span>المتطلبات الوظيفية</h1>
+    <ul>
+        <li><strong>الزوار:</strong> تصفح المقالات، تصفية المحتوى حسب الفئات، التسجيل، وتسجيل الدخول.</li>
+        <li><strong>المستخدمون المسجلون:</strong> إضافة تعليقات على المقالات، وإدارة ملفاتهم الشخصية.</li>
+        <li><strong>المديرون:</strong> الوصول إلى لوحة التحكم، إنشاء/تعديل/حذف المقالات، إدارة التعليقات والمستخدمين الآخرين، وعرض إحصائيات النظام.</li>
+    </ul>
+
+    <!-- 10. Non-functional requirements -->
+    <h1 id="req-nonfunc"><span class="section-number">6.</span>المتطلبات غير الوظيفية</h1>
+    <ul>
+        <li><strong>الأمان:</strong> حماية كلمات المرور باستخدام دالة <code>password_hash()</code>، ومنع هجمات الحقن باستخدام تقنية PDO.</li>
+        <li><strong>الأداء:</strong> سرعة استجابة عالية بفضل كتابة الأكواد بأسلوب أصلي (Vanilla CSS/JS).</li>
+        <li><strong>الاستخدامية:</strong> واجهة تفاعلية بديهية توفر تغذية راجعة بصرية (تأثيرات الإضاءة والتمرير).</li>
+        <li><strong>التوافقية:</strong> تصميم متجاوب يعمل بكفاءة على الهواتف، الأجهزة اللوحية، وشاشات الحواسيب.</li>
+    </ul>
+
+    <!-- 11. System architecture -->
+    <h1 id="arch-sys"><span class="section-number">7.</span>هيكلية النظام</h1>
+    <p>يعتمد المشروع على هيكلية معمارية قائمة على الأصناف (OOP) لفصل منطق الأعمال عن واجهة العرض:</p>
+    <ul>
+        <li><strong>مجلد <code>core/</code>:</strong> يحتوي على الأصناف الأساسية للنظام (مثل <code>Database.php</code>، <code>User.php</code>، <code>Admin.php</code>).</li>
+        <li><strong>مجلد <code>Admin/</code>:</strong> يضم ملفات وواجهات لوحة تحكم الإدارة (مثل <code>dashboard.php</code> و <code>create_post.php</code>).</li>
+        <li><strong>مجلد <code>includes/</code>:</strong> يحتوي على الأجزاء المشتركة من واجهة المستخدم (مثل <code>header.php</code> و <code>footer.php</code>).</li>
+        <li><strong>مجلد <code>assets/</code>:</strong> يشمل ملفات الأنماط (CSS) والصور الخاصة بالمشروع.</li>
+    </ul>
+
+    <!-- 12. Database architecture -->
+    <h1 id="arch-db"><span class="section-number">8.</span>هيكلية قاعدة البيانات</h1>
+    <p>تدير قاعدة البيانات العلائقية المسماة <code>x-core</code> تخزين جميع معلومات النظام. وقد صُممت لضمان سلامة وتكامل البيانات من خلال استخدام محرك التخزين InnoDB.</p>
+    
+    <div class="img-container">
+        <img src="../database/x-core-diagram.png" alt="مخطط قاعدة بيانات x-core">
+        <p class="caption">الشكل 1: المخطط العلائقي لقاعدة البيانات</p>
+    </div>
+
+    <!-- 13. Database relationships -->
+    <h1 id="db-rel"><span class="section-number">9.</span>علاقات قاعدة البيانات</h1>
+    <p>تتضمن قاعدة البيانات مجموعة من العلاقات الأساسية المحددة عبر المفاتيح الأجنبية (Foreign Keys):</p>
+    <ul>
+        <li>ينتمي المقال (<code>posts</code>) إلى فئة محددة (<code>categories</code>) - <em>علاقة واحد إلى متعدد (1:N)</em>.</li>
+        <li>يُكتب المقال (<code>posts</code>) بواسطة مستخدم واحد (<code>users</code>) - <em>علاقة واحد إلى متعدد (1:N)</em>.</li>
+        <li>يرتبط التعليق (<code>comments</code>) بمقال ومستخدم محدد، مع تفعيل خاصية الحذف المتتالي (<code>ON DELETE CASCADE</code>) - <em>علاقة واحد إلى متعدد</em>.</li>
+    </ul>
+
+    <!-- 14. SQL structure explanation -->
+    <h1 id="sql-exp"><span class="section-number">10.</span>شرح البنية البرمجية لقاعدة البيانات (SQL)</h1>
+    <p>توضح الجداول التالية المكونات الأساسية المستخرجة من ملف <code>x-core.sql</code>:</p>
+    <table>
+        <tr><th>الجدول</th><th>الوصف</th></tr>
+        <tr><td><code>users</code></td><td>يخزن المعرف، اسم المستخدم، البريد الإلكتروني، كلمة المرور المشفرة، الصلاحية (admin/user)، وتاريخ التسجيل.</td></tr>
+        <tr><td><code>categories</code></td><td>يحتوي على اسم الفئة وحقل <code>color_tag</code> لعرض الألوان الديناميكية (مثل: tag-blue).</td></tr>
+        <tr><td><code>posts</code></td><td>يُسجل مقالات المدونة متضمناً العنوان، المحتوى (HTML)، مسار الصورة، ومعرفي المستخدم والفئة.</td></tr>
+        <tr><td><code>comments</code></td><td>يخزن نصوص التعليقات ويربطها بمعرفي المقال والمستخدم.</td></tr>
+        <tr><td><code>contact_messages</code></td><td>يحفظ الرسائل المرسلة من قبل الزوار عبر صفحة اتصل بنا (<code>contact.php</code>).</td></tr>
+    </table>
+
+    <div class="page-break"></div>
+
+    <!-- 15. Authentication system -->
+    <h1 id="auth"><span class="section-number">11.</span>نظام المصادقة</h1>
+    <p>تم تنفيذ نظام المصادقة داخل الصنف <code>User.php</code>. حيث تقوم الدالة <code>register()</code> باستخدام دالة PHP المدمجة <code>password_hash()</code> لتشفير كلمة المرور قبل تخزينها. وعند تسجيل الدخول، تقوم الدالة <code>login()</code> باسترجاع بيانات المستخدم والتحقق من صحة كلمة المرور المدخلة عبر دالة <code>password_verify()</code>، مما يوفر طبقة حماية متينة.</p>
+
+    <!-- 16. User management system -->
+    <h1 id="user-mgt"><span class="section-number">12.</span>نظام إدارة المستخدمين</h1>
+    <p>يميز النظام بين نوعين من الصلاحيات عبر حقل <code>role</code> (ENUM). يتم إدارة الجلسات باستخدام المتغير <code>$_SESSION['role']</code>. في حال حاول مستخدم عادي الوصول إلى مجلد الإدارة <code>/Admin/</code>، يتم اعتراض طلبه وإعادة توجيهه فوراً إلى الصفحة الرئيسية لحماية النظام.</p>
+
+    <!-- 17. Admin dashboard analysis -->
+    <h1 id="admin-dash"><span class="section-number">13.</span>تحليل لوحة تحكم الإدارة</h1>
+    <p>تعمل واجهة لوحة التحكم (<code>Admin/dashboard.php</code>) كمركز لإدارة العمليات. حيث تقوم الدالة <code>getSystemStats()</code> بحساب عدد المقالات، المستخدمين، والتعليقات وعرضها كإحصائيات. كما تسهل القائمة الجانبية (<code>admin_aside.php</code>) التنقل بين مهام إدارة المحتوى بسلاسة.</p>
+
+    <!-- 18. Blog post management system -->
+    <h1 id="blog-mgt"><span class="section-number">14.</span>نظام إدارة المقالات</h1>
+    <p>يتولى الصنف <code>Admin.php</code> إدارة المقالات. تعتمد عملية الاسترجاع على استعلامات SQL متقدمة تستخدم روابط <code>LEFT JOIN</code> لدمج المقال مع اسم الكاتب ولون الفئة (<code>categories.color_tag</code>)، مما يسمح بعرض البيانات بشكل ديناميكي وجذاب في الواجهة الأمامية.</p>
+
+    <!-- 19. CRUD operations explanation -->
+    <h1 id="crud"><span class="section-number">15.</span>شرح عمليات CRUD</h1>
+    <ul>
+        <li><strong>الإنشاء (Create):</strong> تقوم الدالة <code>createPost()</code> بإضافة مقال جديد باستخدام الاستعلامات المجهزة الآمنة.</li>
+        <li><strong>القراءة (Read):</strong> تتيح الدوال <code>getAllPosts()</code> و <code>getPostById($id)</code> جلب وعرض البيانات للمستخدمين.</li>
+        <li><strong>التحديث (Update):</strong> يسمح ملف <code>edit_post.php</code> للمديرين بتعديل محتوى وتفاصيل المقالات.</li>
+        <li><strong>الحذف (Delete):</strong> تقوم الدالة <code>deletePost()</code> بحذف المقال بناءً على معرفه، وتُحذف التعليقات المرتبطة تلقائياً بفضل التكامل المرجعي في قاعدة البيانات.</li>
+    </ul>
+
+    <!-- 20. Front-end analysis -->
+    <h1 id="frontend"><span class="section-number">16.</span>تحليل واجهة المستخدم الأمامية</h1>
+    <p>تم بناء الواجهة الأمامية بالاعتماد على تقنيات الويب الأساسية دون إطارات عمل. يتم عرض البيانات في الملفات العامة (مثل <code>index.php</code>) باستخدام متغيرات PHP. كما تم تضمين خطوط ويب احترافية مثل (Orbitron، Rajdhani) لتعزيز الطابع التقني للمشروع.</p>
+
+    <!-- 21. Back-end analysis -->
+    <h1 id="backend"><span class="section-number">17.</span>تحليل الواجهة الخلفية</h1>
+    <p>تتبنى الواجهة الخلفية مبادئ البرمجة كائنية التوجه. يتم إنشاء كائن <code>PDO</code> في ملف <code>config.php</code> ويُمرر إلى بقية الأصناف عبر تقنية حقن التبعية (Dependency Injection). يضمن هذا الأسلوب استخدام اتصال واحد بقاعدة البيانات خلال دورة حياة الطلب، مما يحسن من استهلاك الموارد.</p>
+
+    <div class="page-break"></div>
+
+    <!-- 22. UI/UX analysis -->
+    <h1 id="ui-ux"><span class="section-number">18.</span>تحليل تجربة وواجهة المستخدم (UI/UX)</h1>
+    <p>تم تصميم الواجهة بعناية فائقة في ملف <code>style.css</code>، بالاعتماد على المتغيرات اللونية المتناسقة. يضفي تأثير "Glassmorphism" (باستخدام <code>backdrop-filter: blur(12px)</code>) عمقاً بصرياً على التصميم. كما تم تزويد العناصر التفاعلية بتأثيرات الإضاءة المتوهجة عند التمرير لتعزيز تفاعل المستخدم.</p>
+
+    <!-- 23. Navigation structure -->
+    <h1 id="nav"><span class="section-number">19.</span>هيكلية التنقل</h1>
+    <p>يعتمد شريط التصفح العلوي (<code>header.php</code>) على تموضع ثابت مع خلفية شفافة مموهة. يتيح الشريط وصولاً سريعاً للصفحة الرئيسية، الفئات، إدارة النظام للمشرفين، بالإضافة إلى خيارات تسجيل الدخول والخروج.</p>
+
+    <!-- 24. Session and security management -->
+    <h1 id="sec"><span class="section-number">20.</span>إدارة الجلسات والأمن</h1>
+    <p>تبدأ الجلسات في أعلى الملفات باستخدام <code>session_start()</code>. ويتجلى الأمان عبر:</p>
+    <ul>
+        <li>الاستخدام الإلزامي لدالة <code>bindParam()</code> لحماية قواعد البيانات.</li>
+        <li>التحقق الصارم من صلاحيات الجلسة قبل منح حق الوصول للصفحات الإدارية.</li>
+        <li>تنظيف وتصفية المدخلات لمنع الثغرات الأمنية المتصلة بالواجهة (XSS).</li>
+    </ul>
+
+    <!-- 25. Responsive design explanation -->
+    <h1 id="resp"><span class="section-number">21.</span>شرح التصميم المتجاوب</h1>
+    <p>يدعم النظام التوافق مع مختلف الشاشات باستخدام تقنيات Flexbox و Grid و Media Queries. يتكيف المحتوى تلقائياً لتوفير عرض مريح على الهواتف المحمولة من خلال إعادة ترتيب العناصر لتصبح في عمود واحد عند الضرورة.</p>
+
+    <!-- 26. Technologies used -->
+    <h1 id="tech"><span class="section-number">22.</span>التقنيات المستخدمة</h1>
+    <ul>
+        <li><strong>لغة الخادم:</strong> PHP 8.x</li>
+        <li><strong>قاعدة البيانات:</strong> MySQL (MariaDB) / PDO</li>
+        <li><strong>تقنيات الواجهة الأمامية:</strong> HTML5, CSS3 Vanilla, JavaScript</li>
+        <li><strong>بيئة التشغيل:</strong> خادم XAMPP / Apache</li>
+    </ul>
+
+    <!-- 27. Development environment -->
+    <h1 id="dev-env"><span class="section-number">23.</span>بيئة التطوير</h1>
+    <p>تم تطوير النظام واختباره في بيئة عمل XAMPP ضمن نظام ويندوز. أُديرت الملفات بهيكلية منطقية داخل مجلد المشروع، وتم استخدام أداة phpMyAdmin لبناء وتصدير مخطط قاعدة البيانات.</p>
+
+    <!-- 28. Testing and validation -->
+    <h1 id="test"><span class="section-number">24.</span>الاختبار والمصادقة</h1>
+    <p>شملت الاختبارات سيناريوهات متعددة منها: تسجيل مستخدم جديد، محاولة الاختراق بصلاحيات منخفضة، إضافة مقالات مرفقة بصور، والتأكد من الحذف المتتالي (Cascade Delete) للتعليقات المرتبطة بالمقالات المحذوفة.</p>
+
+    <!-- 29. Results and discussion -->
+    <h1 id="results"><span class="section-number">25.</span>النتائج والمناقشة</h1>
+    <p>أثبتت الهيكلية المستخدمة كفاءتها العالية. حيث يتسم النظام بالسرعة والخفة نظراً لغياب المكتبات البرمجية المدمجة المعقدة. وتقدم الواجهة البصرية تجربة مستخدم متميزة ترفع من معدل التفاعل والرضا.</p>
+
+    <!-- 30. Problems encountered -->
+    <h1 id="problems"><span class="section-number">26.</span>المشاكل التي تمت مواجهتها</h1>
+    <p>برزت بعض التحديات التقنية خلال مرحلة التطوير، خاصة فيما يتعلق بضبط تأثيرات الزجاج المصنفر (Glassmorphism) لتتوافق مع معايير الأداء في مختلف المتصفحات، بالإضافة إلى تنسيق الجلسات بين قسمي الإدارة والواجهة العامة.</p>
+
+    <!-- 31. Future improvements -->
+    <h1 id="future"><span class="section-number">27.</span>التحسينات المستقبلية</h1>
+    <ul>
+        <li>تطبيق نظام الترقيم (Pagination) للصفحة الرئيسية للتعامل مع العدد المتزايد من المقالات.</li>
+        <li>دمج محرر نصوص غني (WYSIWYG) لتسهيل كتابة وتنسيق المقالات المعقدة.</li>
+        <li>تطوير نظام استرجاع كلمة المرور عبر البريد الإلكتروني.</li>
+    </ul>
+
+    <!-- 32. General conclusion -->
+    <h1 id="conclusion"><span class="section-number">28.</span>خاتمة عامة</h1>
+    <p>يمثل مشروع <strong>7X Hub Blog</strong> نموذجاً عملياً متميزاً لتطوير نظم إدارة المحتوى المتكاملة والموثوقة. بفضل اعتماده على لغة PHP الصرفة والتصميم المخصص، يوفر المشروع أساساً متيناً قابلاً للتوسع ليلبي الاحتياجات المستقبلية بكل كفاءة.</p>
+
+    <!-- 33. Bibliography -->
+    <h1 id="biblio"><span class="section-number">29.</span>المراجع</h1>
+    <ul>
+        <li>التوثيق الرسمي للغة PHP ومكتبة PDO.</li>
+        <li>شبكة مطوري موزيلا (MDN) لتقنيات الويب الأساسية.</li>
+        <li>دلائل أمن الويب وممارسات الحماية من الثغرات.</li>
+    </ul>
+
+    <div class="page-break"></div>
+
+    <!-- 34. Appendices -->
+    <h1><span class="section-number">30.</span>الملاحق</h1>
+    <p><strong>الملحق أ: جزء من كود الاتصال بقاعدة البيانات (config.php)</strong></p>
+    <code>
+        $host = "localhost";<br>
+        $db_name = "x-core";<br>
+        $username = "root";<br>
+        $password = "";<br>
+        ...<br>
+        $conn = new PDO("mysql:host=" . $host . ";dbname=" . $db_name, $username, $password);
+    </code>
+
+</body>
+</html>
