@@ -42,6 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/style.css">
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/auth.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/responsive.css">
 </head>
 
 <body class="auth-page">

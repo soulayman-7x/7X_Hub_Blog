@@ -1,0 +1,528 @@
+/* ============================================================
+   responsive.css — 7X Hub Blog
+   Mobile-first responsive layer. Added LAST to override safely.
+   Breakpoints:
+     Tablet  : max-width 1024px
+     Mobile  : max-width 768px
+   ⚠  No existing CSS or PHP was deleted or renamed.
+   ============================================================ */
+
+/* Admin create_post form row — replaces inline grid style */
+.admin-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+@media (max-width: 768px) {
+    .admin-form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+}
+
+/* ─────────────────────────────────────────
+   GLOBAL CONTAINER & BODY
+───────────────────────────────────────── */
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1rem;
+    }
+
+    /* Extra bottom padding so content isn't hidden behind mobile nav */
+    body {
+        padding-bottom: 80px;
+    }
+
+    main {
+        padding-top: 4rem;
+    }
+}
+
+/* ─────────────────────────────────────────
+   HEADER — Hide desktop nav on mobile
+───────────────────────────────────────── */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .site-header {
+        padding: 10px 0;
+    }
+}
+
+/* ─────────────────────────────────────────
+   MOBILE BOTTOM NAV BAR
+   Visible ONLY on ≤ 768px
+───────────────────────────────────────── */
+.mobile-bottom-nav {
+    display: none; /* Hidden by default (desktop & tablet) */
+}
+
+@media (max-width: 768px) {
+    .mobile-bottom-nav {
+        display: flex;
+        position: fixed;
+        bottom: 12px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: calc(100% - 32px);
+        max-width: 480px;
+        background: rgba(7, 4, 15, 0.92);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(0, 212, 255, 0.18);
+        border-radius: 50px;
+        padding: 8px 12px;
+        gap: 4px;
+        justify-content: space-around;
+        align-items: center;
+        z-index: 999;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(106, 13, 173, 0.2);
+    }
+
+    .mob-nav-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3px;
+        padding: 8px 14px;
+        border-radius: 40px;
+        color: rgba(232, 222, 255, 0.45);
+        text-decoration: none;
+        font-family: var(--font-display);
+        font-size: 0.55rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        transition: all 0.25s ease;
+        flex: 1;
+    }
+
+    .mob-nav-item i {
+        font-size: 1.1rem;
+        transition: all 0.25s ease;
+    }
+
+    .mob-nav-item span {
+        color: inherit;
+        font-weight: 600;
+        font-size: 0.52rem;
+    }
+
+    .mob-nav-item:hover {
+        color: var(--color-7x-blue);
+        background: rgba(0, 212, 255, 0.07);
+    }
+
+    .mob-nav-item.active {
+        color: var(--color-7x-cyan);
+        background: rgba(0, 212, 255, 0.1);
+        box-shadow: 0 0 12px rgba(0, 212, 255, 0.2);
+    }
+
+    .mob-nav-item.active i {
+        text-shadow: 0 0 12px rgba(0, 255, 255, 0.6);
+        color: var(--color-7x-cyan);
+    }
+}
+
+/* ─────────────────────────────────────────
+   TYPOGRAPHY SCALING
+───────────────────────────────────────── */
+@media (max-width: 768px) {
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.1rem; }
+}
+
+/* ─────────────────────────────────────────
+   HERO SECTION (index.php)
+───────────────────────────────────────── */
+@media (max-width: 1024px) {
+    .hero {
+        padding: 4rem 0;
+    }
+
+    .hero-decor {
+        width: 260px;
+        height: 260px;
+        opacity: 0.5;
+    }
+
+    .hero-stats {
+        gap: 2rem;
+        margin: 1.5rem 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 2.5rem 0;
+    }
+
+    /* Hide the decorative rings — they overflow behind text */
+    .hero-decor {
+        display: none;
+    }
+
+    .hero-title {
+        font-size: clamp(1.8rem, 8vw, 2.5rem);
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+        max-width: 100%;
+        margin-bottom: 1.5rem;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .hero-actions .btn {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .hero-stats {
+        gap: 1.5rem;
+        margin: 1.5rem 0 0;
+        padding: 1.5rem 0;
+    }
+
+    .hero-p {
+        font-size: 0.7rem;
+    }
+}
+
+/* ─────────────────────────────────────────
+   POSTS SECTION — Section Header
+───────────────────────────────────────── */
+@media (max-width: 768px) {
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+}
+
+/* ─────────────────────────────────────────
+   FEATURED POST (index.php)
+───────────────────────────────────────── */
+@media (max-width: 1024px) {
+    .featured-post {
+        grid-template-columns: 1fr;
+    }
+
+    .featured-post .post-image {
+        min-height: 280px;
+    }
+}
+
+@media (max-width: 768px) {
+    .featured-post .post-image {
+        min-height: 200px;
+    }
+
+    .featured-post .post-body {
+        padding: 1.5rem;
+        gap: 0.8rem;
+    }
+}
+
+/* ─────────────────────────────────────────
+   POST GRID (index.php)
+───────────────────────────────────────── */
+@media (max-width: 1024px) {
+    .post-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .post-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ─────────────────────────────────────────
+   NEWSLETTER BAND (index.php)
+───────────────────────────────────────── */
+@media (max-width: 1024px) {
+    .newsletter-inner {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .newsletter-inner {
+        padding: 1.5rem;
+        gap: 1.5rem;
+    }
+
+    .newsletter-form {
+        flex-direction: column;
+    }
+
+    .newsletter-form input {
+        width: 100%;
+    }
+
+    .newsletter-form .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* ─────────────────────────────────────────
+   ARTICLE PAGE (article.php)
+───────────────────────────────────────── */
+@media (max-width: 768px) {
+    .article-hero {
+        padding: 2rem 0 1.5rem;
+    }
+
+    .article-title {
+        font-size: clamp(1.5rem, 6vw, 2rem);
+        margin-bottom: 1.2rem;
+    }
+
+    /* Meta bar: wrap and hide dividers */
+    .article-meta-bar {
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .meta-divider {
+        display: none;
+    }
+
+    /* Article image: let height be auto, don't crop brutally */
+    .article-image {
+        height: auto;
+        min-height: 180px;
+    }
+
+    .article-content {
+        padding: 0 0 2rem;
+    }
+}
+
+/* ─────────────────────────────────────────
+   CONTACT PAGE (contact.php)
+───────────────────────────────────────── */
+@media (max-width: 1024px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .contact-section {
+        padding: 3rem 0 5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-section {
+        padding: 2rem 0 4rem;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-form-wrap {
+        padding: 1.5rem;
+    }
+
+    .form-footer {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .btn-submit {
+        width: 100%;
+    }
+}
+
+/* ─────────────────────────────────────────
+   FOOTER (all pages)
+───────────────────────────────────────── */
+@media (max-width: 1024px) {
+    .footer-inner {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .site-footer {
+        margin-top: 4rem;
+        margin-bottom: 4rem; /* Space above mobile bottom nav */
+        padding: 2rem 0 1.5rem;
+    }
+
+    .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+
+    .footer-brand p {
+        max-width: 100%;
+    }
+}
+
+/* ─────────────────────────────────────────
+   AUTH PAGES (login.php, register.php)
+───────────────────────────────────────── */
+@media (max-width: 768px) {
+    .auth-page {
+        padding: 1.5rem 1rem;
+        align-items: flex-start;
+        padding-top: 3rem;
+    }
+
+    .auth-card {
+        padding: 2rem 1.5rem;
+    }
+}
+
+/* ─────────────────────────────────────────
+   ADMIN — DASHBOARD (Admin/dashboard.php)
+───────────────────────────────────────── */
+@media (max-width: 1024px) {
+    .admin-layout {
+        flex-direction: column;
+        padding: 16px;
+        gap: 16px;
+    }
+
+    .glass-sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        top: auto;
+        padding: 20px;
+    }
+
+    .sidebar-nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .sidebar-logo {
+        margin-bottom: 16px;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+
+    .admin-header {
+        padding: 16px 20px;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    .admin-layout {
+        padding: 12px;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stat-card {
+        padding: 20px;
+    }
+
+    .stat-value {
+        font-size: 2.2rem;
+    }
+
+    .admin-title h1 {
+        font-size: 1.3rem;
+    }
+}
+
+/* ─────────────────────────────────────────
+   ADMIN — POSTS TABLE (Admin/posts.php)
+───────────────────────────────────────── */
+@media (max-width: 1024px) {
+    .admin-container {
+        flex-direction: column;
+    }
+
+    /* Reuse glass-sidebar responsive rules from dashboard above */
+    .admin-main {
+        width: 100%;
+        padding: 1.5rem;
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .admin-main {
+        padding: 1rem;
+    }
+
+    .glass-panel {
+        padding: 12px;
+    }
+
+    /* Table scrolls horizontally instead of breaking layout */
+    .glass-panel {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .protocol-table th,
+    .protocol-table td {
+        padding: 10px 8px;
+        font-size: 0.85rem;
+        white-space: nowrap;
+    }
+}
+
+/* ─────────────────────────────────────────
+   ADMIN FORMS (create_post, edit_post)
+───────────────────────────────────────── */
+@media (max-width: 768px) {
+    .admin-form .form-control {
+        font-size: 0.95rem;
+    }
+}
+
+/* ─────────────────────────────────────────
+   IMAGES — Global safety net
+───────────────────────────────────────── */
+@media (max-width: 768px) {
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+}

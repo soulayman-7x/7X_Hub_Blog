@@ -38,6 +38,7 @@ if (!$post) {
     <title>7X Hub - <?= htmlspecialchars($post['title']) ?></title>
     <link rel="stylesheet" href="assets/CSS/style.css">
     <link rel="stylesheet" href="assets/CSS/article.css">
+    <link rel="stylesheet" href="assets/CSS/responsive.css">
     <link rel="icon" href="assets/images/logo/X-Core-V1-Wh.png">
 </head>
 

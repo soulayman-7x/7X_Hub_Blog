@@ -46,6 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/posts.css">
     <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
     
 </head>
 <body>
@@ -72,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <input type="text" name="title" class="form-control" required placeholder="e.g. Advanced Quantum Encryption Methods">
                     </div>
 
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+                    <div class="admin-form-row">
                         <div class="form-group">
                             <label>> SECTOR_CATEGORY</label>
                             <select name="category_id" class="form-control" required>

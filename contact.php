@@ -72,6 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <title>7X Hub - Contact</title>
     <link rel="stylesheet" href="assets/CSS/style.css">
     <link rel="stylesheet" href="assets/CSS/contact.css">
+    <link rel="stylesheet" href="assets/CSS/responsive.css">
     <link rel="icon" href="assets/images/logo/X-Core-V1-Wh.png">
 
 </head>

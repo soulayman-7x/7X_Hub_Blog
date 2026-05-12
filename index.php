@@ -44,6 +44,7 @@ if ($db) {
 
     <link rel="stylesheet" href="assets/CSS/style.css">
     <link rel="stylesheet" href="assets/CSS/index.css">
+    <link rel="stylesheet" href="assets/CSS/responsive.css">
     <link rel="icon" href="assets/images/logo/X-Core-V1-Wh.png">
 </head>
 

@@ -29,6 +29,7 @@ $stats = $admin->getSystemStats();
     
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
 </head>
 <body>
 

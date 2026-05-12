@@ -26,6 +26,7 @@ $posts = $admin->getAllPostsAdmin();
     <link rel="stylesheet" href="../assets/CSS/style.css">
     <link rel="stylesheet" href="../assets/CSS/dashboard.css">
     <link rel="stylesheet" href="../assets/CSS/posts.css">
+    <link rel="stylesheet" href="../assets/CSS/responsive.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 

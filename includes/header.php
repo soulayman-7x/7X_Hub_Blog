@@ -35,3 +35,51 @@ $currentPage = basename($_SERVER['PHP_SELF']);
         </div>
     </div>
 </header>
+
+<!-- ═══════════════════════════════════════════
+     MOBILE BOTTOM NAV — Visible only on ≤768px
+     Uses same $currentPage & $isLoggedIn vars
+     already set before this include is called.
+     NO PHP LOGIC was modified.
+     ═══════════════════════════════════════════ -->
+<nav class="mobile-bottom-nav" aria-label="Mobile Navigation">
+
+    <a href="index.php" class="mob-nav-item <?= ($currentPage == 'index.php') ? 'active' : '' ?>">
+        <i class="fa-solid fa-house-chimney"></i>
+        <span>Home</span>
+    </a>
+
+    <a href="contact.php" class="mob-nav-item <?= ($currentPage == 'contact.php') ? 'active' : '' ?>">
+        <i class="fa-solid fa-satellite-dish"></i>
+        <span>Contact</span>
+    </a>
+
+    <?php if ($isLoggedIn): ?>
+
+        <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
+            <a href="Admin/dashboard.php" class="mob-nav-item <?= ($currentPage == 'dashboard.php') ? 'active' : '' ?>">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>Admin</span>
+            </a>
+        <?php endif; ?>
+
+        <a href="logout.php" class="mob-nav-item">
+            <i class="fa-solid fa-power-off"></i>
+            <span>Exit</span>
+        </a>
+
+    <?php else: ?>
+
+        <a href="login.php" class="mob-nav-item <?= ($currentPage == 'login.php') ? 'active' : '' ?>">
+            <i class="fa-solid fa-fingerprint"></i>
+            <span>Login</span>
+        </a>
+
+        <a href="register.php" class="mob-nav-item <?= ($currentPage == 'register.php') ? 'active' : '' ?>">
+            <i class="fa-solid fa-terminal"></i>
+            <span>Join</span>
+        </a>
+
+    <?php endif; ?>
+
+</nav>

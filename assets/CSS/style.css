@@ -491,3 +491,41 @@ main {
 .footer-copy span {
     color: var(--color-7x-purple-light);
 }
+
+/* ════════════════════════════
+   RESPONSIVE
+════════════════════════════ */
+
+@media (max-width: 900px) {
+  .post-grid { grid-template-columns: 1fr 1fr; }
+  .featured-post { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .newsletter { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+  .nav-toggle { display: flex; }
+  .site-nav {
+    display: none;
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+    flex-direction: column;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 1.5rem;
+    gap: 0.25rem;
+  }
+  .site-nav.open { display: flex; }
+  .nav-link, .nav-cta { width: 100%; padding: 0.6rem 0.8rem; }
+
+  .post-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  .footer-bottom { flex-direction: column; gap: 0.5rem; }
+  .post-nav { grid-template-columns: 1fr; }
+  .post-nav-link.next { text-align: left; }
+  .form-row { grid-template-columns: 1fr; }
+  .meta-bar { gap: 1rem; }
+  .meta-divider { display: none; }
+  .newsletter-form { flex-direction: column; }
+}
