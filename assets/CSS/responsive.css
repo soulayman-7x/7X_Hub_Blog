@@ -1,11 +1,4 @@
-/* ============================================================
-   responsive.css — 7X Hub Blog
-   Mobile-first responsive layer. Added LAST to override safely.
-   Breakpoints:
-     Tablet  : max-width 1024px
-     Mobile  : max-width 768px
-   ⚠  No existing CSS or PHP was deleted or renamed.
-   ============================================================ */
+
 
 /* Admin create_post form row — replaces inline grid style */
 .admin-form-row {
