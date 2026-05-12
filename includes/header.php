@@ -37,11 +37,8 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 </header>
 
 <!-- ═══════════════════════════════════════════
-     MOBILE BOTTOM NAV — Visible only on ≤768px
-     Uses same $currentPage & $isLoggedIn vars
-     already set before this include is called.
-     NO PHP LOGIC was modified.
-     ═══════════════════════════════════════════ -->
+        MOBILE BOTTOM NAV 
+    ═══════════════════════════════════════════ -->
 <nav class="mobile-bottom-nav" aria-label="Mobile Navigation">
 
     <a href="index.php" class="mob-nav-item <?= ($currentPage == 'index.php') ? 'active' : '' ?>">
