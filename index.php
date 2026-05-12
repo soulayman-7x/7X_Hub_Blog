@@ -88,7 +88,7 @@ if ($db) {
 
                     <div class="stat-item">
                         <span class="stat-value"><?= $stats['total_users'] ?></span>
-                        <span class="stat-label">Verified Agents</span>
+                        <span class="stat-label">Agents</span>
                     </div>
                 </div>
 
